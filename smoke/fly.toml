@@ -1,0 +1,24 @@
+# fly.toml file generated for floral-leaf-19 on 2022-10-12T11:52:34+05:30
+
+app = "floral-leaf-19"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[build]
+  builder = "paketobuildpacks/builder:base"
+  buildpacks = ["gcr.io/paketo-buildpacks/go"]
+
+[env]
+  PORT = "8080"
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
+  internal_port = 10000
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 10000
